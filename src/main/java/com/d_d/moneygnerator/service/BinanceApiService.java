@@ -6,8 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
@@ -29,6 +27,7 @@ public class BinanceApiService {
             HttpHeaders headers = new HttpHeaders();
             headers.set("X-MBX-APIKEY", API_BINANCE_KEY);
             HttpEntity<String> entity = new HttpEntity<>(headers);
+
             return Optional.ofNullable(restTemplate.getForObject(API_BINANCE_URL + symbol, PriceResponse.class))
                     .map(PriceResponse::price)
                     .orElse("");

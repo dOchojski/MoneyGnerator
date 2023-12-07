@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 public class MoneyGneratorApplication {
-    private static final BinanceApiService binanceApiService = new BinanceApiService(new RestTemplate());
+    private static final BinanceApiService binanceApiService = new BinanceApiService();
 
     public static void main(String[] args) {
         SpringApplication.run(MoneyGneratorApplication.class, args);
