@@ -1,40 +1,22 @@
 package com.d_d.moneygnerator.service;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import org.json.JSONObject;
+import com.d_d.moneygnerator.model.PriceResponse;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
+
 public class BinanceApiService {
 
     private static final String API_BINANCE_URL = "https://api.binance.com/api/v3/ticker/price?symbol=";
+    private static final RestTemplate restTemplate = new RestTemplate();
+
 
     public static String getCurrentPrice(String symbol) {
         try {
-            URL url = new URL(API_BINANCE_URL + symbol);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.connect();
-
-            int responseCode = connection.getResponseCode();
-            if (responseCode != 200) {
-                throw new RuntimeException("HttpResponseCode: " + responseCode);
-            } else {
-                StringBuilder informationString = new StringBuilder();
-                BufferedReader br = new BufferedReader(
-                        new InputStreamReader(connection.getInputStream()));
-                String line;
-                while ((line = br.readLine()) != null) {
-                    informationString.append(line);
-                }
-                br.close();
-
-                JSONObject json = new JSONObject(informationString.toString());
-                return json.getString("price");
-            }
-        } catch (Exception e) {
+            PriceResponse response = restTemplate.getForObject(API_BINANCE_URL + symbol, PriceResponse.class);
+            return response != null ? response.price() : null;
+        } catch (HttpClientErrorException e) {
             e.printStackTrace();
+            return null;
         }
-        return null;
     }
 }
