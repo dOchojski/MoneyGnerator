@@ -1,0 +1,14 @@
+broker:
+  config:
+    binance:
+      api-key: x2s4cdLhZua80IplBXCjFIr78jQYestXdNK0CxSyew9fPPv5LF6OlKFBziBfuLk7
+      api-secret: KnnFyA1rXdMG8Dg2xFKDTn7sCxufGXqg4WfshLGtYWV1WU4211gQcnzXW7lKY9Nw
+      base-url: https://api.binance.com/api
+      params: {}
+    kucoin:
+      api-key: 657200ff11bca0000181c892
+      api-secret: 86846632-d00d-465b-9a96-2948e33ae339
+      base-url: https://openapi-v2.kucoin.com/
+      params:
+        passPhase: Cdbfe77ec!
+
