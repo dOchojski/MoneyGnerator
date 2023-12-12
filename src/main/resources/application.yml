@@ -11,4 +11,13 @@ broker:
       base-url: https://openapi-v2.kucoin.com/
       params:
         passPhase: Cdbfe77ec!
-
+    bybit:
+      api-key: yOgbdqTiHaHQ1xqJ0M
+      api-secret: Ni4iGHHQjI3qkmzCKtPh9ejmnSAWc6EPRDc1
+      base-url: https://api-testnet.bybit.com
+      params: { }
+    kraken:
+      api-key: RFPq6EQk+LWAcqvokjcrI87IMYLQU7xgP1HFqMrMc6761ZfBTH4P3sGQ
+      api-secret: dAy9AQnEiOPQqgkiGUoZJ2ZNw4jcz4b4pMJjdRjhi2yGhMwocHBi3Spp7dtMn+VUWKjZoJ6Cz3EmYTHbKnwMKQ==
+      base-url: https://api.kraken.com
+      params: { }
